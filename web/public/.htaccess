@@ -1,0 +1,13 @@
+# ************
+# CORE DIRECTIVES
+Header set Connection keep-alive
+Options +FollowSymLinks
+RewriteEngine on
+
+
+# ROUTE ALL TRAFFIC TO INDEX.PHP
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^(.*)$ index.php?%{QUERY_STRING} [L,NC,QSA]
+RewriteRule ^(.*)$ %{REQUEST_FILENAME}.php?%{QUERY_STRING} [L,NC,QSA]
+# ************
